@@ -1,24 +1,25 @@
-
-
+# GeoIP2 · CN · CHNRoutes
+### 小巧、准确、实用的 中国大陆 IPv4 + IPv6 GeoIP2 数据库
 ### 简介
-本项目将ipip中国地址转换 MaxMind mmdb的格式。由于MaxMind会把部分污染的IP错误归类为中国地址，导致不定时出现无法代理的情况。而IPIP提供的分类更为准确。因此这是一个临时解决方案，用于将ipip的china_ip_list转成MaxMind数据库格式并用于clash分流。
+由于 MaxMind 将部分 IP 错误归类为中国大陆，导致根据 GeoIP 分流出现问题。
+且现有 IP 库大都不包含 IPv6 地址信息，此项目应运而生并保持每天更新。
 
-### 使用
-对于Clash用户只需要直接下载Country.mmdb并覆盖原来的Country.mmdb
-Country.mmdb只包含中国的ip列表，并没有其他国家数据
-每月自动从 [ipip](https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt) 抓取china_ip_list进行转换
+### 下载
+| 📦 项目 | 📃 文件 | :octocat: GitHub RAW | 🚀 CDN 加速 | 🔧 适用范围
+|  :--:  |  :--:  |     :--:     |     :--:    | ---- |
+| IP-CIDR 列表 | CN-ip-cidr.txt | [点击下载](https://github.com/jxcn/GeoIP2-CN/raw/release//CN-ip-cidr.txt) | [加速下载](https://cdn.jsdelivr.net/gh/jxcn/GeoIP2-CN@release/CN-ip-cidr.txt) | iptables, ipset, squid, gost, 3proxy, etc. | 
+| GeoIP2 数据库 | Country.mmdb | [点击下载](https://github.com/jxcn/GeoIP2-CN/raw/release//Country.mmdb) | [加速下载](https://cdn.jsdelivr.net/gh/jxcn/GeoIP2-CN@release/Country.mmdb) | Surge, Shadowrocket, QuantumultX, Clash IP-CDR|
+| IP sets | chnroute.ipset | [点击下载](https://github.com/jxcn/GeoIP2-CN/raw/release//chnroute.ipset) | [加速下载](https://cdn.jsdelivr.net/gh/jxcn/GeoIP2-CN@release/chnroute.ipset) | ipset restore < chnroute.ipset |
 
-### 代码及下载
-源代码在master branch
-生成mmdb库在release branch下载
+### 版权
+本项目 Fork 自 [JMVoid/ipip2mmdb](https://github.com/JMVoid/ipip2mmdb)，并加以修改和调整。
 
-### 链接
-| 文件 | release分支 |
-| ------ | ------ | 
-|Country.mmdb | [链接](https://raw.githubusercontent.com/JMVoid/ipip2mmdb/release/Country.mmdb) |
+项目中使用的 IP 数据源自 [17mon/china_ip_list](https://github.com/17mon/china_ip_list) (IPv4) 和 [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) (IPv6)。
 
-### Credit
-[@alecthw](https://github.com/alecthw/mmdb_china_ip_list)
+GeoIP® 商标版权归 [MaxMind](https://www.maxmind.com/) 公司所有。
 
-### 扩展说明
-verify代码用来验证在2020.9月发现某些IP会被MaxMind错误归类为中国IP
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
